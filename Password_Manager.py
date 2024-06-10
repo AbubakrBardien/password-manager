@@ -157,6 +157,23 @@ def deletePassword():
     else:
         print("\nPassword doesn't exist for this service")
 
+
+def saveNewPassword():
+    newService = input("\nEnter the name of the service? ")
+
+    if newService in passwordList:
+        print("\nPassword already exists")
+        return
+
+    newPassword = input("\nEnter the password: ")
+
+    line = simpleEncryption(newService+"|"+newPassword)
+
+    with open("My_Passwords.txt", "a") as myFile:
+        myFile.write(line+"\n")
+
+    print("\nWrote to textfile")
+
 ################################################################################
 
 
@@ -198,7 +215,8 @@ while True:
 
     print("1: Find Password")
     print("2: Generate Password")
-    print("3: Delete Password")
+    print("3: Save New Password")
+    print("4: Delete Password")
     print("q: Quit\n")
 
     userInput = input()
@@ -208,6 +226,8 @@ while True:
     elif userInput == "2":
         generatePassword()
     elif userInput == "3":
+        saveNewPassword()
+    elif userInput == "4":
         deletePassword()
     else:
         break
