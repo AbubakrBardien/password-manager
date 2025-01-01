@@ -1,2 +1,3 @@
-# password-manager
-My CLI Password Manager
+# Password Manager
+
+A CLI Password Manager written in Python.
