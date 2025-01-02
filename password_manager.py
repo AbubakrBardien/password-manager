@@ -52,10 +52,13 @@ def findPassword():
         userInput = input()
         print()
         if userInput == "all":
-            # Sort passwords (case insensitive)
-            passwordListSorted = dict(sorted(passwordList.items(), key=lambda item: item[0].upper()))
-            for x in passwordListSorted:
-                print(x+": "+passwordListSorted[x])
+            if len(passwordList) == 0:
+                print("No Passwords Stored")
+            else:
+                # Sort passwords (case insensitive)
+                passwordListSorted = dict(sorted(passwordList.items(), key=lambda item: item[0].upper()))
+                for x in passwordListSorted:
+                    print(x+": "+passwordListSorted[x])
             break
         elif userInput in passwordList:
             print(userInput + ": " + passwordList[userInput])
