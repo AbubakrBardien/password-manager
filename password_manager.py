@@ -167,13 +167,24 @@ def importPassword():
 
 ################################################################################
 
-with open("Master_Password.txt") as myFile:
-    line = simpleEncryption(myFile.readline()).rstrip("\n")
-    masterPass = line
+try:
+    with open("Master_Password.txt") as myFile:
+        line = simpleEncryption(myFile.readline()).rstrip("\n")
+        masterPass = line
 
-userInput = getpass.getpass("Enter the master password: ")
-while userInput != masterPass:
-    userInput = input("Wrong! Try again: ")
+        userInput = getpass.getpass("Enter the master password: ")
+        while userInput != masterPass:
+            userInput = input("Wrong! Try again: ")
+
+except FileNotFoundError:
+    masterPass = getpass.getpass("Master Password not found, create a Master Password: ")
+
+    with open("Master_Password.txt","w") as myFile:
+        myFile.write(simpleEncryption(masterPass))
+
+    # For creating this file if it doesn't exist yet
+    with open("My_Passwords.txt", "w") as myFile:
+        pass
 
 loadPasswords()
 
