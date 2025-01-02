@@ -6,8 +6,6 @@ userInput = str()
 passwordList = {}
 isFirstLoop = True
 
-multi_List = []
-
 
 def shuffleChars(string: str) -> str:
     l = []
