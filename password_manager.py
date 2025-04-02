@@ -177,7 +177,7 @@ try:
 
         userInput = getpass.getpass("Enter the master password: ")
         while userInput != masterPass:
-            userInput = input("Wrong! Try again: ")
+            userInput = getpass.getpass("Wrong! Try again: ")
 
 except FileNotFoundError:
     masterPass = getpass.getpass("Master Password not found, create a Master Password: ")
