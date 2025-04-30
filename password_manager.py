@@ -60,14 +60,18 @@ def findPassword():
                 for x in passwordListSorted:
                     print(x+": "+passwordListSorted[x])
             break
-        elif userInput in passwordList:
-            print(userInput + ": " + passwordList[userInput])
-            break
         else:
-            print("Password doesn't exist for this service")
-            userInput = input("Try again? (Y/N): ")
-            if userInput.upper() != "Y":
-                break
+            # Able to 'fuzzyfind' passwords too (by using the input as a substring)
+            matches = [password for password in passwordList if userInput in password]
+            if matches:
+                for match in matches:
+                    print(match + ": " + passwordList[match])
+            else:
+                print("Password doesn't exist for this service")
+                userInput = input("Try again? (Y/N): ")
+                if userInput.upper() != "Y":
+                    break
+
 
 def addPassword(serviceName: str, password: str, message: str):
     passwordList[serviceName] = password
