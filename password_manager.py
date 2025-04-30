@@ -93,12 +93,7 @@ def generatePassword():
 
     userInput = input("Defualt Mode or Advanced Mode? (D/A): ")
 
-    if userInput.upper() == "D":
-        passwordLength = 15
-        nrUpperCaseChars = 3
-        nrDigits = 3
-        nrSpecialChars = 3
-    else:
+    if userInput.upper() == "A":
         while True:
             print("\nPassword Requirements")
             passwordLength = int(
@@ -113,6 +108,11 @@ def generatePassword():
                     "The chosen length of your password is too short for your other password requirements. Try again.")
             else:
                 break
+    else:
+        passwordLength = 15
+        nrUpperCaseChars = 3
+        nrDigits = 3
+        nrSpecialChars = 3
 
     upperCaseChars = str()
     digits = str()
