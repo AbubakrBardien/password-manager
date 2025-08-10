@@ -66,6 +66,7 @@ def findPassword():
             if matches:
                 for match in matches:
                     print(match + ": " + passwordList[match])
+                break
             else:
                 print("Password doesn't exist for this service")
                 userInput = input("Try again? (Y/N): ")
@@ -221,3 +222,4 @@ while True:
         break
 
     isFirstLoop = False
+
